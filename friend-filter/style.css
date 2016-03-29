@@ -71,12 +71,12 @@ html {
 	right: 15px;
 }
 
-.friends {
+#friends {
 	/*position: relative;;*/
 	height: 361px;
 }
 
-.friends ul {
+#friends ul {
 	border-top: 1px solid #f0f0f0;
 	margin-left: 7px;
 	margin-right: 3px;
@@ -86,12 +86,12 @@ html {
 	overflow: auto;
 }
 
-.friends li {
+#friends li {
 	position: relative;
 	height: 60px;
 }
 
-.friends .round {
+#friends .round {
 	position: absolute;
 	left: 5px;
 	top: 7px;
@@ -105,40 +105,40 @@ html {
  	behavior: url(border-radius.htc); /*IE */
 }
 
-.friends li .friend_name {
+#friends li .friend_name {
 	position: absolute;
 	left: 55px;
 	top: 20px;
 }
 
-.friends li .delete_add {
+#friends li .delete_add {
 	position: absolute;
 	right: 10px;
 	top:23px;
 }
 
-.friends li .delete_add:hover {
+#friends li .delete_add:hover {
 	cursor: pointer;
 }
 
-.friends li:hover {
+#friends li:hover {
 	background-color: #f0f0f0;
 }
 
-.friends .right_col {
+#friends .right_col {
 	float: right;
 	width: 309px;
 	height: 361px;
 	border-left: 1px solid #f0f0f0;
 }
 
-.friends .left_col {
+#friends .left_col {
 	width: 309px;
 	margin-right: 311px; 
 	height: 361px;
 }
 
-.friends p {
+#friends p {
 	padding-left:  10px;
 	margin-top: 0px; 
 	padding-top: 10px;
