@@ -14,13 +14,14 @@
 				<span>Выберите друзей</span>
 				<img class="close_window" src="img/close-window.png">
 			</div>
-			<div class="search">
+			<div id="search">
 				<div class="search_box left_search">
 					<img src="img/search.png" alt="Найти">
-					<input type="text" value="Начните вводить имя друга"></div>
+					<input id="left_inp" type="text" value="Начните вводить имя друга">
+				</div>
 				<div class="search_box right_search">
 					<img src="img/search.png" alt="Найти">
-					<input type="text" value="Начните вводить имя друга">
+					<input id="right_inp" type="text" value="Начните вводить имя друга">
 				</div>
 			</div>
 			<div id="friends">
@@ -39,7 +40,7 @@
 		</div>
 		<script type="text/x-handlebars-template" id="rightItemTemplate">
 			<ul>
-				{{#each right_list}}
+				{{#each list}}
 				<li>
 					<img class="round" src="{{photo_50}}" alt="Аватар">
 					<span class="friend_name">{{first_name}} {{last_name}}</span>
@@ -50,7 +51,7 @@
 		</script>
 		<script type="text/x-handlebars-template" id="leftItemTemplate">
 			<ul>
-				{{#each left_list}}
+				{{#each list}}
 				<li>
 					<img class="round" src="{{photo_50}}" alt="Аватар">
 					<span class="friend_name">{{first_name}} {{last_name}}</span>
