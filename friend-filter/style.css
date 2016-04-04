@@ -82,7 +82,7 @@ html {
 	margin-right: 3px;
 	list-style-type: none;
 	padding: 0;
-	height: 341px;
+	height: 310px;
 	overflow: auto;
 }
 
@@ -111,13 +111,13 @@ html {
 	top: 20px;
 }
 
-#friends li .delete_add {
+#friends li .friend_button {
 	position: absolute;
 	right: 10px;
 	top:23px;
 }
 
-#friends li .delete_add:hover {
+#friends li .friend_button:hover {
 	cursor: pointer;
 }
 
@@ -125,14 +125,14 @@ html {
 	background-color: #f0f0f0;
 }
 
-#friends .right_col {
+#friends #right_col {
 	float: right;
 	width: 309px;
 	height: 361px;
 	border-left: 1px solid #f0f0f0;
 }
 
-#friends .left_col {
+#friends #left_col {
 	width: 309px;
 	margin-right: 311px; 
 	height: 361px;
@@ -145,6 +145,10 @@ html {
 	font-weight: bold;
 }
 
+#friends .user_id {
+	display: none;
+}
+
 .bottom {
 	position: relative;; 
 	height: 44px;
@@ -152,7 +156,7 @@ html {
 	border-radius: 0px 0px 10px 10px;
 }
 
-.bottom .save_btn {
+.bottom #save_btn {
 	width: 87px;
 	height: 31px;
 	border-radius: 10px;
@@ -164,7 +168,7 @@ html {
 	top: 8px;
 }
 
-.bottom .save_btn:hover {
+.bottom #save_btn:hover {
 	background-color: #ffffff;
 	color: black;
 }

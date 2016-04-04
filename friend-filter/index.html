@@ -12,39 +12,40 @@
 		<div class="container">
 			<div class="top">
 				<span>Выберите друзей</span>
-				<img class="close_window" src="img/close-window.png">
+				<img class="close_window" src="http://savepic.ru/9259264.png">
 			</div>
 			<div id="search">
 				<div class="search_box left_search">
-					<img src="img/search.png" alt="Найти">
-					<input id="left_inp" type="text" value="Начните вводить имя друга">
+					<img src="http://savepic.ru/9248000.png" alt="Найти">
+					<input id="left_inp" type="text" placeholder="Начните вводить имя друга">
 				</div>
 				<div class="search_box right_search">
-					<img src="img/search.png" alt="Найти">
-					<input id="right_inp" type="text" value="Начните вводить имя друга">
+					<img src="http://savepic.ru/9259264.png" alt="Найти">
+					<input id="right_inp" type="text" placeholder="Начните вводить имя друга">
 				</div>
 			</div>
 			<div id="friends">
-				<div class="right_col">
+				<div id="right_col">
 					<p>Друзья в списке</p>
 					<div id="rightResults"></div>
 				</div>
-				<div class="left_col">
+				<div id="left_col">
 					<p>Ваши друзья</p>
 					<div id="leftResults"></div>
 				</div>
 			</div>
 			<div class="bottom">
-				<button class="save_btn">Сохранить</button>
+				<button id="save_btn">Сохранить</button>
 			</div>
 		</div>
 		<script type="text/x-handlebars-template" id="rightItemTemplate">
 			<ul>
 				{{#each list}}
-				<li>
+				<li draggable='true'>
+					<span class='user_id'>{{uid}}</span>
 					<img class="round" src="{{photo_50}}" alt="Аватар">
 					<span class="friend_name">{{first_name}} {{last_name}}</span>
-					<img class="delete_add" src="img/Delete.png" alt="Удалить">
+					<img class="friend_button delete" src="http://savepic.ru/9250048.png" alt="Удалить">
 				</li>
 				{{/each}}
 			</ul>
@@ -52,10 +53,11 @@
 		<script type="text/x-handlebars-template" id="leftItemTemplate">
 			<ul>
 				{{#each list}}
-				<li>
+				<li draggable='true'>
+					<span class='user_id'>{{uid}}</span>
 					<img class="round" src="{{photo_50}}" alt="Аватар">
 					<span class="friend_name">{{first_name}} {{last_name}}</span>
-					<img class="delete_add" src="img/Add.png" alt="Добавить">
+					<img class="friend_button add" src="http://savepic.ru/9265408.png" alt="Добавить">
 				</li>
 				{{/each}}
 			</ul>
