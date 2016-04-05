@@ -12,13 +12,12 @@ new Promise(function(resolve) {
 	return new Promise(function(resolve, reject) {
 		friends.addEventListener('click', onFriendButtonClick);
 		search.addEventListener('keyup', onSearchChanged);
-		//search.addEventListener('mousedown', onMouseDownInput);
 		left_col.addEventListener('dragstart', onDragStart, false);
 		right_col.addEventListener('dragstart', onDragStart, false);
+		left_col.addEventListener('dragover', onDragOver, false);
+		right_col.addEventListener('dragover', onDragOver, false);
 		left_col.addEventListener('drop', onDrop, false);
 		right_col.addEventListener('drop', onDrop, false);
-		left_col.addEventListener('dragend', onDragEnd, false);
-		right_col.addEventListener('dragend', onDragEnd, false);
 		save_btn.addEventListener('click', onSave);
 
 		leftList = JSON.parse(localStorage.getItem('leftList')),
@@ -82,8 +81,7 @@ function moveFromListToList(userId, direction) {
 function onFriendButtonClick(e) {
 	if(e.target.className.indexOf('add') !== -1) {
 		console.log('click add');
-		var userId = e.target.parentElement.querySelector('.user_id').innerHTML,
-			deletedLi = e.target.parentElement;
+		var userId = e.target.parentElement.querySelector('.user_id').innerHTML;
 		if(rightList === null)
 			rightList = [];
 		for (var i = 0; i < leftList.length; i++) {
@@ -95,8 +93,7 @@ function onFriendButtonClick(e) {
 		}
 	} else if(e.target.className.indexOf('delete') !== -1) {
 		console.log('click delete');
-		var userId = e.target.parentElement.querySelector('.user_id').innerHTML,
-			deletedLi = e.target.parentElement;
+		var userId = e.target.parentElement.querySelector('.user_id').innerHTML;
 		if(leftList === null)
 			leftList = [];
 		for (var i = 0; i < rightList.length; i++) {
@@ -154,28 +151,59 @@ function getTemplateHTML(templateHTML, sourceObj) {
 var dragSrcEl = null;
 function onDragStart(e) {
 	console.log(e);
-	dragSrcEl = this;
+	dragSrcEl = e.target;
 	e.dataTransfer.effectAllowed = 'move';
   	e.dataTransfer.setData('text/html', this.innerHTML);
-	this.style.opacity = '0.4';
+	//this.style.opacity = '0.4';
 }
-
+function onDragOver(e) {
+    if (e.preventDefault) {
+        e.preventDefault();
+    }
+    if (e.target.id === 'right_col' || e.target.id === 'left_col') {
+        e.dataTransfer.dropEffect = 'move';
+    }
+    return false;
+}
 function onDrop(e) {
 	console.log(e);
-
-	// Don't do anything if dropping the same column we're dragging.
-	if (dragSrcEl != this) {
-	    // Set the source column's HTML to the HTML of the columnwe dropped on.
-	    dragSrcEl.innerHTML = this.innerHTML;
-	    this.innerHTML = e.dataTransfer.getData('text/html');
+	if (e.stopPropagation) {
+  		e.stopPropagation(); // stops the browser from redirecting.
 	}
 
-  	return false;
-}
+	var srcDiv = dragSrcEl.parentElement.parentElement.parentElement;
+	if (srcDiv.id != this.id) {
+		var userId = dragSrcEl.querySelector('.user_id').innerHTML;
+		if(rightList === null)
+			rightList = [];
+		if(leftList === null)
+			leftList = [];
 
-function onDragEnd(e) {
-	console.log(e);
-	this.style.opacity = '1';
+		if(srcDiv.id == 'left_col') {
+			for (var i = 0; i < leftList.length; i++) {
+				if(leftList[i].uid.toString().indexOf(userId) !== -1) {
+					deletedElement = leftList.splice(i, 1);
+					rightList[rightList.length] = deletedElement[0];
+					break;
+				}
+			}
+		} 
+		else  {
+			for (var i = 0; i < rightList.length; i++) {
+				if(rightList[i].uid.toString().indexOf(userId) !== -1) {
+					deletedElement = rightList.splice(i, 1);
+					leftList[leftList.length] = deletedElement[0];
+					break;
+				}
+			}
+		} 
+
+		updateLists();
+	}
+	else
+		console.log('В себя');
+
+  	return false;
 }
 
 function onSave(e) {

@@ -43,9 +43,9 @@
 				{{#each list}}
 				<li draggable='true'>
 					<span class='user_id'>{{uid}}</span>
-					<img class="round" src="{{photo_50}}" alt="Аватар">
-					<span class="friend_name">{{first_name}} {{last_name}}</span>
-					<img class="friend_button delete" src="http://savepic.ru/9250048.png" alt="Удалить">
+					<img class="round" src="{{photo_50}}" alt="Аватар" draggable="false">
+					<span class="friend_name" draggable="false">{{first_name}} {{last_name}} </span>
+					<img class="friend_button delete" src="http://savepic.ru/9250048.png" alt="Удалить" draggable="false">
 				</li>
 				{{/each}}
 			</ul>
@@ -55,9 +55,9 @@
 				{{#each list}}
 				<li draggable='true'>
 					<span class='user_id'>{{uid}}</span>
-					<img class="round" src="{{photo_50}}" alt="Аватар">
-					<span class="friend_name">{{first_name}} {{last_name}}</span>
-					<img class="friend_button add" src="http://savepic.ru/9265408.png" alt="Добавить">
+					<img class="round" src="{{photo_50}}" alt="Аватар" draggable="false">
+					<span class="friend_name" draggable="false">{{first_name}} {{last_name}}</span>
+					<img class="friend_button add" src="http://savepic.ru/9265408.png" alt="Добавить" draggable="false">
 				</li>
 				{{/each}}
 			</ul>
